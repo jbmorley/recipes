@@ -40,13 +40,14 @@
 
     <script type="module">
 
+        /* Return a random integer up to, but not including, `max`. */
         function randomInt(max) {
           return Math.floor(Math.random() * max);
         }
 
-        const response = await fetch("recipes.json");
+        const response = await fetch("recipes.json", {cache: "no-store"});
         const recipes = await response.json();
-        const index = randomInt(recipes.length - 1);
+        const index = randomInt(recipes.length);
         const selection = recipes[index];
         document.getElementById("suggestion").innerHTML = selection;
 
