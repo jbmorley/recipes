@@ -1,20 +1,20 @@
-{% if page.scale then %}
-{% width = page.image.width / page.scale %}
-{% height = page.image.height / page.scale %}
+{% if document.scale then %}
+{% width = document.image.width / document.scale %}
+{% height = document.image.height / document.scale %}
 {% else %}
-{% width = page.image.width %}
-{% height = page.image.height %}
+{% width = document.image.width %}
+{% height = document.image.height %}
 {% end %}
 
-{% if page.projection == "equirectangular" then %}
-    {% path = page.image.url %}
+{% if document.projection == "equirectangular" then %}
+    {% path = document.image.url %}
     {% include "panorama_content.html" %}
 {% else %}
     <div class="photo-container">
     <img class="photo-img transition loading"
-         {% if page.alt then %}alt="{{ page.alt }}"{% elseif page.title then %}alt="{{ page.title }}"{% end %}
-         {% if page.title then %}title="{{ page.title }}"{% elseif page.alt then %}title="{{ page.alt }}"{% end %}
-         src="{{ page.image.url }}"
+         {% if document.alt then %}alt="{{ document.alt }}"{% elseif document.title then %}alt="{{ document.title }}"{% end %}
+         {% if document.title then %}title="{{ document.title }}"{% elseif document.alt then %}title="{{ document.alt }}"{% end %}
+         src="{{ document.image.url }}"
          width="{{ width }}"
          height="{{ height }}"
         />

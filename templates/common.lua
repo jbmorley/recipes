@@ -44,7 +44,7 @@
     end
 
     function gallery(path)
-        local parentPath = page.resolve(path)
+        local parentPath = document.resolve(path)
         local photos = site.query { parent = parentPath }
         include("album_content.html")
     end
@@ -86,7 +86,7 @@
 {% function project(url, image, title, description) %}
     <li class="project">
         <div class="album aspect square line">
-            <a href="{{ url }}"><img src="{{ page.resolve(image) }}"/></a>
+            <a href="{{ url }}"><img src="{{ document.resolve(image) }}"/></a>
         </div>
         <p>
             <a href="{{ url }}">{{ title }}</a><br />

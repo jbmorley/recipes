@@ -2,20 +2,16 @@
 
 <article class="post-content">
 
-    {% if page.image then %}
+    {% if document.image then %}
         <div class="photo-container">
-            <a href="{{ page.url }}"><img src="{{ page.image.url }}" width="{% if page.scale then %}{{ page.image.width / page.scale }}{% else %}{{ page.image.width }}{% end %}" /></a>
+            <a href="{{ document.url }}"><img src="{{ document.image.url }}" width="{% if document.scale then %}{{ document.image.width / document.scale }}{% else %}{{ document.image.width }}{% end %}" /></a>
         </div>
     {% end %}
 
-    {% renderDocumentHTML(page) %}
+    {% renderDocumentHTML(document) %}
 
 </article>
 
 <p class="post-meta">
-    {% if page.date then %}{{ page.date.format(site.date_format) }}{% end %}{% if page.meta then %} • {{ page.meta }}{% end %}
+    {% if document.date then %}{{ document.date.format(site.date_format) }}{% end %}{% if document.meta then %} • {{ document.meta }}{% end %}
 </p>
-
-{% --[[ if page.location then %}
-    <x-map latitude="{{ page.location.latitude }}" longitude="{{ page.location.longitude }}" title="{{ page.location.title }}" />
-{% end ]]-- %}

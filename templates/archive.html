@@ -1,9 +1,9 @@
 {% include "common.lua" %}
 {% function content() %}
-    <h1>{{ page.title }}</h1>
-    {% renderDocumentHTML(page) %}
+    <h1>{{ document.title }}</h1>
+    {% renderDocumentHTML(document) %}
     <ul>
-    {% for _, document in ipairs(page.query("content")) do %}
+    {% for _, document in ipairs(document.query("content")) do %}
         <li><a href="{{ document.url }}">{{ document.title }}</a></li>
     {% end %}
     <ul>

@@ -2,20 +2,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="last-modified" content="{{ page.last_modified.format(iso_8601_format) }}">
+    <meta http-equiv="last-modified" content="{{ document.last_modified.format(iso_8601_format) }}">
 
-    <title>{% if page.title and page.title ~= "" then %}{{ page.title }} &mdash; {% end %}{{ site.title }}</title>
+    <title>{% if document.title and document.title ~= "" then %}{{ document.title }} &mdash; {% end %}{{ site.title }}</title>
 
-    {% if page.title then %}
-        <meta property="og:title" content="{{ page.title }}">
+    {% if document.title then %}
+        <meta property="og:title" content="{{ document.title }}">
     {% end %}
     {% local thumbnailURL = thumbnail and thumbnail() %}
     {% if thumbnailURL then %}
         <meta property="og:image" content="{{ thumbnailURL }}">
-    {% elseif page.thumbnail and type(page.thumbnail) == "string" then %}
-        <meta property="og:image" content="{{ page.resolve(page.thumbnail) }}">
-    {% elseif page.thumbnail then %}
-        <meta property="og:image" content="{{ page.thumbnail.url }}">
+    {% elseif document.thumbnail and type(document.thumbnail) == "string" then %}
+        <meta property="og:image" content="{{ document.resolve(document.thumbnail) }}">
+    {% elseif document.thumbnail then %}
+        <meta property="og:image" content="{{ document.thumbnail.url }}">
     {% end %}
 
     <link rel="alternate" type="application/json" title="{{ site.title }}" href="/feed">
