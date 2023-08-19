@@ -1,0 +1,11 @@
+body {
+    background-color: rebeccapurple;
+    color: white;
+    font-family: 'EB Garamond', serif;
+    /* font-family: 'PT Serif', serif;
+    font-family: 'Wix Madefor Display', sans-serif; */
+}
+
+a {
+    color: white;
+}

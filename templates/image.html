@@ -1,0 +1,22 @@
+{% if page.scale then %}
+{% width = page.image.width / page.scale %}
+{% height = page.image.height / page.scale %}
+{% else %}
+{% width = page.image.width %}
+{% height = page.image.height %}
+{% end %}
+
+{% if page.projection == "equirectangular" then %}
+    {% path = page.image.url %}
+    {% include "panorama_content.html" %}
+{% else %}
+    <div class="photo-container">
+    <img class="photo-img transition loading"
+         {% if page.alt then %}alt="{{ page.alt }}"{% elseif page.title then %}alt="{{ page.title }}"{% end %}
+         {% if page.title then %}title="{{ page.title }}"{% elseif page.alt then %}title="{{ page.alt }}"{% end %}
+         src="{{ page.image.url }}"
+         width="{{ width }}"
+         height="{{ height }}"
+        />
+    </div>
+{% end %}

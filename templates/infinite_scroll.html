@@ -1,0 +1,12 @@
+<script type="module">
+    import { InfiniteScroll } from '/js/infinite-scroll.js';
+    {%
+        local elements = {}
+        for _, page in ipairs(items) do
+            local element = base64(render(item_template))
+            table.insert(elements, element)
+        end
+    %}
+    var content = {{ json(elements) }};
+    InfiniteScroll.init('{{ id }}', content);
+</script>
