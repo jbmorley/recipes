@@ -1,9 +1,9 @@
-config:
+title: Recipes
+url: "https://recipes.jbmorley.co.uk"
 
-    title: Recipes
+config:
     date_format: "%B %-d, %Y"
     date_format_short: "%B %-d"
-    url: "https://recipes.jbmorley.co.uk"
 
 build_steps:
 
