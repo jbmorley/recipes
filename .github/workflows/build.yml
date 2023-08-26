@@ -25,10 +25,11 @@ jobs:
     - name: Build site
       run: |
         scripts/build.sh
+        mv build-swift/files _site
 
     - name: Fix permissions
       run: |
-        chmod -v -R +rX "build-swift/files/" | while read line; do
+        chmod -v -R +rX "_site/" | while read line; do
           echo "::warning title=Invalid file permissions automatically fixed::$line"
         done
 
