@@ -26,6 +26,12 @@ jobs:
       run: |
         scripts/build.sh
 
+    - name: Fix permissions
+      run: |
+        chmod -v -R +rX "build/files/" | while read line; do
+          echo "::warning title=Invalid file permissions automatically fixed::$line"
+        done
+
 #     - name: Deploy site
 #       if: github.ref == 'refs/heads/main'
 #       env:
