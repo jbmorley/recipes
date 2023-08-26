@@ -32,6 +32,9 @@ jobs:
           echo "::warning title=Invalid file permissions automatically fixed::$line"
         done
 
+    - name: Upload Pages artifact
+      uses: actions/upload-pages-artifact@v2
+
 #     - name: Deploy site
 #       if: github.ref == 'refs/heads/main'
 #       env:
