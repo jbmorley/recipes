@@ -24,7 +24,6 @@ jobs:
 
     - name: Build site
       run: |
-        cd site
         scripts/build.sh
 
 #     - name: Deploy site
