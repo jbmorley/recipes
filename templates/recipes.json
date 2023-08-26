@@ -1,0 +1,7 @@
+{%
+    local recipes = {}
+    for _, document in ipairs(document.query("content")) do
+        table.insert(recipes, { title = document.title, url = document.url })
+    end
+    write(json(recipes))
+%}

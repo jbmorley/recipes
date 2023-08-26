@@ -1,0 +1,65 @@
+name: build-and-deploy
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+  repository_dispatch:
+    types: [ build ]
+
+jobs:
+  build:
+    runs-on: macos-13
+    steps:
+
+    - name: Checkout source
+      uses: actions/checkout@v3
+      with:
+        lfs: true
+        submodules: recursive
+
+    - name: Build site
+      run: |
+        scripts/build.sh
+        mv build-swift/files _site
+
+    - name: Fix permissions
+      run: |
+        chmod -v -R +rX "_site/" | while read line; do
+          echo "::warning title=Invalid file permissions automatically fixed::$line"
+        done
+
+    - name: Upload Pages artifact
+      uses: actions/upload-pages-artifact@v2
+
+  deploy:
+    needs: build
+    if: ${{ github.ref == 'refs/heads/main' }}
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2 # or the latest "vX.X.X" version tag for this action
+
+
+#     - name: Deploy site
+#       if: github.ref == 'refs/heads/main'
+#       env:
+#         ANSIBLE_SSH_KEY: ${{ secrets.ANSIBLE_SSH_KEY }}
+#       run: |
+#         cd site
+#         ./ansible/deploy.py
