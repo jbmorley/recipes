@@ -23,7 +23,7 @@ jobs:
     - name: Build site
       run: |
         scripts/build.sh
-        mv build-swift/files _site
+        mv build/files _site
 
     - name: Fix permissions
       run: |
