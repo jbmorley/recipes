@@ -25,7 +25,7 @@ jobs:
 
     - name: Build site
       run: |
-        scripts/build.sh
+        incontext build
         mv build/files _site
 
     - name: Fix permissions
