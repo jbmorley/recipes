@@ -4,6 +4,10 @@ body {
     font-family: 'Bitter', serif;
 }
 
+a {
+    color: black;
+}
+
 .content {
     margin: 2em 4em;
 }
