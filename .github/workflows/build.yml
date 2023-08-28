@@ -57,12 +57,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2 # or the latest "vX.X.X" version tag for this action
-
-
-#     - name: Deploy site
-#       if: github.ref == 'refs/heads/main'
-#       env:
-#         ANSIBLE_SSH_KEY: ${{ secrets.ANSIBLE_SSH_KEY }}
-#       run: |
-#         cd site
-#         ./ansible/deploy.py
