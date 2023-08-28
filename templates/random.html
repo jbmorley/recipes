@@ -18,16 +18,20 @@
         const recipes = await response.json();
         const index = randomInt(recipes.length);
         const selection = recipes[index];
-        var a = document.createElement("a");
         var title = document.createTextNode(selection.title);
-        a.appendChild(title);
-        a.title = selection.title;
-        if (selection.link !== undefined) {
-            a.href = selection.link;
+        if (selection.hasContent || selection.link !== undefined) {
+            var a = document.createElement("a");
+            a.appendChild(title);
+            a.title = selection.title;
+            if (selection.link !== undefined) {
+                a.href = selection.link;
+            } else {
+                a.href = selection.url;
+            }
+            document.getElementById("suggestion").appendChild(a);
         } else {
-            a.href = selection.url;
+            document.getElementById("suggestion").appendChild(title);
         }
-        document.getElementById("suggestion").appendChild(a);
 
     </script>
 </html>
