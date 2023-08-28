@@ -20,6 +20,9 @@ jobs:
         lfs: true
         submodules: recursive
 
+    - name: Install InContext
+      run: brew install inseven/incontext/incontext
+
     - name: Build site
       run: |
         scripts/build.sh
