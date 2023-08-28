@@ -4,7 +4,11 @@
     {% renderDocumentHTML(document) %}
     <ul>
     {% for _, document in ipairs(document.query("content")) do %}
-        <li><a href="{{ document.url }}">{{ document.title }}</a></li>
+        {% if document.link then %}
+            <li><a href="{{ document.link }}">{{ document.title }}</a></li>
+        {% else %}
+            <li><a href="{{ document.url }}">{{ document.title }}</a></li>
+        {% end %}
     {% end %}
     <ul>
 {% end %}

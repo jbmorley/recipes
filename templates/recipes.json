@@ -1,7 +1,11 @@
 {%
     local recipes = {}
     for _, document in ipairs(document.query("content")) do
-        table.insert(recipes, { title = document.title, url = document.url })
+        local recipe = { title = document.title, url = document.url }
+        if document.link then
+            recipe.link = document.link
+        end
+        table.insert(recipes, recipe)
     end
     write(json(recipes))
 %}
