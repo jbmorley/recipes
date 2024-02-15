@@ -1,8 +1,5 @@
+{% include "common.lua" %}
 {%
-    function hasContent(document)
-        return document.content ~= nil and document.content ~= ''
-    end
-
     local recipes = {}
     for _, document in ipairs(document.query("content")) do
         local recipe = { title = document.title, url = document.url, hasContent = hasContent(document) }

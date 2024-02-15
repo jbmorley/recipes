@@ -3,7 +3,26 @@
     <div class="post">
         {% include "post_header.html" %}
         <article class="post-content">
+            <h1>Description</h1>
             {% renderDocumentHTML(document) %}
+            <div class="recipe">
+                <div>
+                    <h1>Ingredients</h1>
+                    <ul>
+                        {% for _, ingredient in ipairs(document.ingredients) do %}
+                            <li>{{ ingredient }}</li>
+                        {% end %}
+                    </ul>
+                </div>
+                <div>
+                    <h1>Method</h1>
+                    <ol>
+                        {% for _, ingredient in ipairs(document.method) do %}
+                            <li>{{ ingredient }}</li>
+                        {% end %}
+                    </ol>
+                </div>
+            </div>
         </article>
     </div>
 {% end %}

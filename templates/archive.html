@@ -6,8 +6,10 @@
     {% for _, document in ipairs(document.query("content")) do %}
         {% if document.link then %}
             <li><a href="{{ document.link }}">{{ document.title }}</a></li>
-        {% else %}
+        {% elseif hasContent(document) then %}
             <li><a href="{{ document.url }}">{{ document.title }}</a></li>
+        {% else %}
+            <li>{{ document.title }}</li>
         {% end %}
     {% end %}
     <ul>

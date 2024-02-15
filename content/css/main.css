@@ -8,13 +8,42 @@ a {
     color: black;
 }
 
+h1 {
+    color: lightblue;
+}
+
+ul, ol {
+    line-height: 1.5em;
+}
+
+nav ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li::after {
+    content: " "
+}
+
+nav ul li:last-child::after {
+    content: "";
+}
+
 .content {
     margin: 2em 4em;
 }
 
 .container {
-    position: relative;
+    position: absolute;
+    top: 0;
     height: 100vh;
+    width: 100vw;
+    z-index: -1;
 }
 
 .center {
@@ -29,4 +58,16 @@ a {
 .suggestion {
     font-size: 100px;
     text-align: center;
+}
+
+.recipe {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr 2fr;
+}
+
+@media (max-width: 800px) {
+    .recipe {
+        grid-template-columns: 1fr;
+    }
 }

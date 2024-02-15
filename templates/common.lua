@@ -8,6 +8,10 @@
 
 {%
 
+    function hasContent(document)
+        return document.content ~= nil and document.content ~= ''
+    end
+
     function concat(values, separator)
         write(table.concat(values, separator))
     end
