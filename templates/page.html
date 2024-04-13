@@ -7,21 +7,26 @@
             {% renderDocumentHTML(document) %}
             <div class="recipe">
                 <div>
-                    <h1>Ingredients</h1>
+		  {% if document.ingredients ~= nil then %}
+                  <h1>Ingredients</h1>
                     <ul>
+
                         {% for _, ingredient in ipairs(document.ingredients) do %}
                             <li>{{ ingredient }}</li>
                         {% end %}
                     </ul>
                 </div>
+		{% end %}
+		{% if document.method ~= nil then %}
                 <div>
                     <h1>Method</h1>
                     <ol>
-                        {% for _, ingredient in ipairs(document.method) do %}
-                            <li>{{ ingredient }}</li>
+                        {% for _, step in ipairs(document.method) do %}
+                            <li>{{ step }}</li>
                         {% end %}
                     </ol>
                 </div>
+		{% end %}
             </div>
         </article>
     </div>
