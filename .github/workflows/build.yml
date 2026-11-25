@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-26.04
     env:
       MISE_CACHE_DIR: ${{ github.workspace }}/.mise/cache
       MISE_CONFIG_DIR: ${{ github.workspace }}/.mise/config
@@ -39,6 +39,11 @@ jobs:
       with:
         version: 2026.11.14
         cache: false
+
+    - name: Install InContext
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y "$(mise where github:inseven/incontext)"/incontext_*.deb
 
     - name: Build site
       run: |
