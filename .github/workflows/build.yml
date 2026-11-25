@@ -40,6 +40,11 @@ jobs:
         version: 2026.11.14
         cache: false
 
+    - name: Install InContext
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y "$(mise where github:inseven/incontext)"/incontext_*.deb
+
     - name: Build site
       run: |
         incontext build
